@@ -1,0 +1,14 @@
+{
+    "name": "ecl2-sdk",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Kashif Siddiqui",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.18.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/s-kashif/ecl2-sdk"
+    }
+}
