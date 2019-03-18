@@ -1,6 +1,6 @@
 #Usage:
 
-    const ECL2 = require('./index')
+    const ECL2 = require('ecl2-sdk')
 
     const options = {
         apiKey: 'your-api-key',
@@ -14,6 +14,16 @@
     const run = async () => {
         try {
             const c = await ECL2.Client(options)
+
+            //Or instantiate with an existing token
+            //const withToken = {
+            //    token: "existing-token",
+            //    tenantId: 'your-tenant-id',
+            //    zone: 'your-zone',
+            //    authUrl: 'your-auth-url',
+            //    appendVersionInPath: false,
+            //}
+            //const c = await ECL2.Client(withToken)
 
             c.listServers()
             c.getServer({ id: 'server-id' })
@@ -31,20 +41,21 @@
             c.getFirewall({ id: 'fw-id' })
 
             c.listZones()
+            c.listCatalog()
         } catch (err) {
             console.error(err)
         }
     }
     run()
 
-#Supported methods
+# Supported methods
 
-###Server
+### Server
 
 -   listServers
 -   getServer
 
-###Network
+### Network
 
 -   listNetworks
 -   getNetwork
@@ -52,12 +63,21 @@
 -   updateNetwork
 -   deleteNetwork
 
-###Firewall
+### Firewall
 
 -   listFirewalls
 -   getFirewall
 
-###Loadbalancer
+### Loadbalancer
 
 -   listLoadbalancers
 -   getLoadbalancer
+
+
+### Availability Zone
+
+-   listZones
+
+### Catalog
+
+-   listCatalog

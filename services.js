@@ -1,5 +1,12 @@
 module.exports = [
     {
+        name: 'listCatalog',
+        type: 'auth',
+        path: '/auth/catalog',
+        key: 'catalog',
+        method: 'GET',
+    },
+    {
         name: 'listZones',
         type: 'nova',
         path: '/os-availability-zone',

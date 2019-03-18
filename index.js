@@ -12,7 +12,7 @@ const Client = options => {
     }
 
     let self = this
-    this.token = null
+    this.token = options.token || null
     this.urls = {}
 
     this.getToken = () => {
@@ -77,7 +77,13 @@ const Client = options => {
                 payload = args.payload
             }
 
-            let url = self.urls[s.type] + s.path
+            let url = ''
+            if (s.type === 'auth') {
+                url = this.creds.authUrl + s.path
+            } else {
+                url = self.urls[s.type] + s.path
+            }
+
             if (args && args.id) {
                 url = url.replace(':id', args.id)
             }
@@ -104,7 +110,21 @@ const Client = options => {
 
     return new Promise(async (resolve, reject) => {
         try {
-            await this.getToken()
+            if (this.token) {
+                let catalog = await this.listCatalog()
+                catalog.forEach(c => {
+                    const matched = c.endpoints.filter(e => e.interface === 'public')
+                    if (matched.length > 0) {
+                        self.urls[c.name] = matched[0].url
+
+                        if (c.name === 'network' && this.creds.appendVersionInPath) {
+                            self.urls.network = self.urls.network + '/v2.0'
+                        }
+                    }
+                })
+            } else {
+                await this.getToken()
+            }
             resolve(this)
         } catch (err) {
             reject(err)
