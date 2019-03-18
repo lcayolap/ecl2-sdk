@@ -16,16 +16,19 @@
             const c = await ECL2.Client(options)
 
             c.listServers()
-            c.getServer('server-id')
+            c.getServer({ id: 'server-id' })
 
             c.listNetworks()
-            c.getNetwork('nw-id')
+            c.getNetwork({ id: 'net-id' })
+            c.updateNetwork({ id: 'net-id', payload: { name: 'newName' } })
+            c.createNetwork({ payload: { name: 'newName' } })
+            c.deleteNetwork({ id: 'net-id' })
 
             c.listLoadbalancers()
-            c.getLoadbalancer('lb-id')
+            c.getLoadbalancer({ id: 'lb-id' })
 
             c.listFirewalls()
-            c.getFirewall('fw-id')
+            c.getFirewall({ id: 'fw-id' })
 
             c.listZones()
         } catch (err) {
@@ -45,6 +48,9 @@
 
 -   listNetworks
 -   getNetwork
+-   createNetwork
+-   updateNetwork
+-   deleteNetwork
 
 ###Firewall
 

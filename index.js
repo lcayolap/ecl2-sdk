@@ -1,4 +1,4 @@
-const { request, get, post } = require('./utils')
+const utils = require('./utils')
 const services = require('./services')
 
 const Client = options => {
@@ -40,7 +40,7 @@ const Client = options => {
             }
 
             try {
-                const r = await request({
+                const r = await utils.request({
                     method: 'POST',
                     url: this.creds.authUrl + '/auth/tokens',
                     payload: JSON.stringify(payload),
@@ -58,7 +58,6 @@ const Client = options => {
                         self.urls[c.name] = matched[0].url
 
                         if (c.name === 'network' && this.creds.appendVersionInPath) {
-                            console.log(c.name, this.creds.appendVersionInPath)
                             self.urls.network = self.urls.network + '/v2.0'
                         }
                     }
@@ -72,23 +71,33 @@ const Client = options => {
     }
 
     services.forEach(s => {
-        if (s.name.startsWith('list')) {
-            self[s.name] = () => get(self.urls[s.type] + s.path, s.key, self.token)
-        } else {
-            //Anything other than list requires id
-            self[s.name] = id => {
-                const url = self.urls[s.type] + s.path.replace(':id', id)
-                switch (s.method.toUpperCase()) {
-                    case 'GET':
-                        return get(url, s.key, self.token)
-                        break
-                    case 'POST':
-                        return post(url, s.payload, self.token)
-                        break
-                    default:
-                        console.log('Unsupported method in service: ', s)
-                        break
-                }
+        self[s.name] = args => {
+            let payload = s.payload
+            if (args && args.payload) {
+                payload = args.payload
+            }
+
+            let url = self.urls[s.type] + s.path
+            if (args && args.id) {
+                url = url.replace(':id', args.id)
+            }
+
+            switch (s.method.toUpperCase()) {
+                case 'GET':
+                    return utils.get(url, s.key, self.token)
+                    break
+                case 'PUT':
+                    return utils.put(url, payload, s.key, self.token)
+                    break
+                case 'POST':
+                    return utils.post(url, payload, s.key, self.token)
+                    break
+                case 'DELETE':
+                    return utils.del(url, self.token)
+                    break
+                default:
+                    console.log('Unsupported method in service: ', s)
+                    break
             }
         }
     })

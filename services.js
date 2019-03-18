@@ -47,6 +47,26 @@ module.exports = [
         payload: null,
     },
     {
+        name: 'createNetwork',
+        type: 'network',
+        path: '/networks',
+        key: 'network',
+        method: 'POST',
+    },
+    {
+        name: 'updateNetwork',
+        type: 'network',
+        path: '/networks/:id',
+        key: 'network',
+        method: 'PUT',
+    },
+    {
+        name: 'deleteNetwork',
+        type: 'network',
+        path: '/networks/:id',
+        method: 'DELETE',
+    },
+    {
         name: 'listFirewalls',
         type: 'network',
         path: '/firewalls',
