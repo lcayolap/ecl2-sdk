@@ -33,9 +33,24 @@ module.exports = [
     {
         name: 'getConsole',
         type: 'nova',
-        path: '/servers/:id/actions',
+        path: '/servers/:id/action',
         method: 'POST',
+        key: 'console',
         payload: { 'os-getVNCConsole': { type: 'novnc' } },
+    },
+    {
+        name: 'startServer',
+        type: 'nova',
+        path: '/servers/:id/action',
+        method: 'POST',
+        payload: { 'os-start': null },
+    },
+    {
+        name: 'stopServer',
+        type: 'nova',
+        path: '/servers/:id/action',
+        method: 'POST',
+        payload: { 'os-stop': null },
     },
     {
         name: 'listNetworks',
