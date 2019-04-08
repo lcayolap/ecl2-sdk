@@ -147,6 +147,12 @@ module.exports = [
         payload: { 'os-stop': null },
     },
     {
+        name: 'deleteServer',
+        type: 'nova',
+        path: '/servers/:id',
+        method: 'DELETE',
+    },    
+    {
         name: 'listNetworks',
         type: 'network',
         path: '/networks',
