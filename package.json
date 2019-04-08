@@ -10,5 +10,8 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/s-kashif/ecl2-sdk"
+    },
+    "scripts": {
+        "test": "node test"
     }
 }
