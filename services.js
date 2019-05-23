@@ -147,11 +147,17 @@ module.exports = [
         payload: { 'os-stop': null },
     },
     {
+        name: 'resizeServer',
+        type: 'nova',
+        path: '/servers/:id/action',
+        method: 'POST',
+    },
+    {
         name: 'deleteServer',
         type: 'nova',
         path: '/servers/:id',
         method: 'DELETE',
-    },    
+    },
     {
         name: 'listNetworks',
         type: 'network',
