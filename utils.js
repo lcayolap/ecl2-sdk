@@ -33,7 +33,7 @@ const get = (url, key, token) => {
                 resolve(r.data)
             }
         } catch (err) {
-            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header)
+            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header+ '\n STATUS: ' + err.response.status)
         }
     })
 }
@@ -48,7 +48,7 @@ const del = (url, token) => {
             })
             resolve('DONE')
         } catch (err) {
-            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header)
+            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header+ '\n STATUS: ' + err.response.status)
         }
     })
 }
@@ -73,7 +73,7 @@ const put = (url, data, key, token) => {
                 resolve(r.data)
             }
         } catch (err) {
-            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header)
+            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header+ '\n STATUS: ' + err.response.status)
         }
     })
 }
@@ -96,7 +96,7 @@ const post = (url, data, key, token) => {
                 resolve(r.data)
             }
         } catch (err) {
-            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header)
+            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header+ '\n STATUS: ' + err.response.status)
         }
     })
 }

@@ -54,11 +54,15 @@ const Client = options => {
                 //Setup url catalog
                 r.data.token.catalog.forEach(c => {
                     const matched = c.endpoints.filter(e => e.interface === 'public')
+
                     if (matched.length > 0) {
                         self.urls[c.name] = matched[0].url
 
                         if (c.name === 'network' && this.creds.appendVersionInPath) {
                             self.urls.network = self.urls.network + '/v2.0'
+                        }
+                        if (c.name === 'glance' && this.creds.appendVersionInPath) {
+                            self.urls.glance = self.urls.glance + '/v2'
                         }
                     }
                 })
@@ -87,6 +91,9 @@ const Client = options => {
             if (args && args.id) {
                 url = url.replace(':id', args.id)
             }
+            if (args && args.query) {
+                url = url.replace(':query', args.query)
+            }
 
             switch (s.method.toUpperCase()) {
                 case 'GET':
@@ -114,6 +121,7 @@ const Client = options => {
                 let catalog = await this.listCatalog()
                 catalog.forEach(c => {
                     const matched = c.endpoints.filter(e => e.interface === 'public')
+
                     if (matched.length > 0) {
                         self.urls[c.name] = matched[0].url
 
