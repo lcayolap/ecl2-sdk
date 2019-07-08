@@ -31,12 +31,15 @@ const Client = options => {
                             },
                         },
                     },
-                    scope: {
-                        project: {
-                            id: this.creds.tenantId,
-                        },
-                    },
                 },
+            }
+
+            if(this.creds.tenantId){
+              payload.auth.scope={
+                  project: {
+                      id: this.creds.tenantId,
+                  },
+              }
             }
 
             try {
@@ -45,14 +48,14 @@ const Client = options => {
                     url: this.creds.authUrl + '/auth/tokens',
                     payload: JSON.stringify(payload),
                 })
-
                 if (!r.headers['x-subject-token']) {
                     reject(r.statusText)
                 }
                 this.token = r.headers['x-subject-token']
 
                 //Setup url catalog
-                r.data.token.catalog.forEach(c => {
+                r.data.token.catalog && r.data.token.catalog.forEach(c => {
+
                     const matched = c.endpoints.filter(e => e.interface === 'public')
 
                     if (matched.length > 0) {
@@ -69,6 +72,7 @@ const Client = options => {
 
                 resolve(this.token)
             } catch (err) {
+              console.log(err.response.data)
                 reject(err)
             }
         })
