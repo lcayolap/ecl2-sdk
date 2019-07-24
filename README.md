@@ -54,6 +54,23 @@
 
 -   listServers
 -   getServer
+-   startServer
+-   stopServer
+-   deleteServer
+
+### Baremetal Server
+
+-   listServer
+-   getServer
+-   deleteServer
+-   getConsole
+-   startServer
+-   stopServer
+-   rebootServer
+-   listZones
+-   listKeypairs
+-   listMetadata
+-   listLimits
 
 ### Network
 
@@ -81,3 +98,7 @@
 ### Catalog
 
 -   listCatalog
+
+
+
+

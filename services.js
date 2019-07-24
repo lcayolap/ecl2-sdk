@@ -31,6 +31,20 @@ module.exports = [
 
     //Baremetal
     {
+        name: 'listBaremetalServers',
+        type: 'baremetal-server',
+        path: '/servers/detail',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'listBaremetalFlavors',
+        type: 'baremetal-server',
+        path: '/flavors/detail',
+        method: 'GET',
+        payload: null,
+    },  
+    {
         name: 'getBaremetalServer',
         type: 'baremetal-server',
         path: '/servers/:id',
@@ -118,20 +132,6 @@ module.exports = [
         type: 'nova',
         path: '/servers/:id',
         key: 'server',
-        method: 'GET',
-        payload: null,
-    },
-    {
-        name: 'listBaremetalServers',
-        type: 'baremetal-server',
-        path: '/servers/detail',
-        method: 'GET',
-        payload: null,
-    },
-    {
-        name: 'listBaremetalFlavors',
-        type: 'baremetal-server',
-        path: '/flavors/detail',
         method: 'GET',
         payload: null,
     },

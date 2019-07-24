@@ -1,6 +1,6 @@
 {
     "name": "ecl2-sdk",
-    "version": "1.3.0",
+    "version": "1.6.0",
     "main": "index.js",
     "author": "Kashif Siddiqui",
     "license": "MIT",
@@ -10,5 +10,8 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/s-kashif/ecl2-sdk"
+    },
+    "scripts": {
+        "test": "node test"
     }
 }
