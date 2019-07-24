@@ -12,7 +12,7 @@ module.exports = [
         path: '/os-keypairs/:id',
         key: 'keypairs',
         method: 'DELETE',
-    },    
+    },
     {
         name: 'listCatalog',
         type: 'auth',
@@ -30,14 +30,6 @@ module.exports = [
     },
 
     //Baremetal
-    {
-        name: 'listBaremetalServers',
-        type: 'baremetal-server',
-        path: '/servers/detail',
-        key: 'servers',
-        method: 'GET',
-        payload: null,
-    },
     {
         name: 'getBaremetalServer',
         type: 'baremetal-server',
@@ -85,14 +77,6 @@ module.exports = [
         type: 'baremetal-server',
         path: '/os-availability-zone',
         key: 'availabilityZoneInfo',
-        method: 'GET',
-        payload: null,
-    },
-    {
-        name: 'listBaremetalFlavors',
-        type: 'baremetal-server',
-        path: '/flavors/detail',
-        key: 'flavors',
         method: 'GET',
         payload: null,
     },
@@ -299,6 +283,25 @@ module.exports = [
         type: 'network',
         path: '/load_balancers/:id',
         key: 'load_balancer',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'attachVolume',
+        type: 'nova',
+        path: '/servers/:id/os-volume_attachments',
+        method: 'POST'
+    },
+    {
+        name: 'detachVolume',
+        type: 'nova',
+        path: '/servers/:id/os-volume_attachments/:query',
+        method: 'DELETE'
+    },
+    {
+        name: 'listFirewallsvSRX',
+        type: 'virtual-network-appliance',
+        path: '/v1.0/virtual_network_appliances',
         method: 'GET',
         payload: null,
     },
