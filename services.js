@@ -284,7 +284,7 @@ module.exports = [
     path: '/v1.0/virtual_network_appliances',
     method: 'GET',
     payload: null,
-  }, 
+  },
   {
     name: 'listInternetGateways',
     type: 'network',
