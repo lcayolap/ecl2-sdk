@@ -7,6 +7,13 @@ module.exports = [
         method: 'GET',
     },
     {
+        name: 'deleteKeypair',
+        type: 'nova',
+        path: '/os-keypairs/:id',
+        key: 'keypairs',
+        method: 'DELETE',
+    },
+    {
         name: 'listCatalog',
         type: 'auth',
         path: '/auth/catalog',
@@ -27,10 +34,16 @@ module.exports = [
         name: 'listBaremetalServers',
         type: 'baremetal-server',
         path: '/servers/detail',
-        key: 'servers',
         method: 'GET',
         payload: null,
     },
+    {
+        name: 'listBaremetalFlavors',
+        type: 'baremetal-server',
+        path: '/flavors/detail',
+        method: 'GET',
+        payload: null,
+    },  
     {
         name: 'getBaremetalServer',
         type: 'baremetal-server',
@@ -82,14 +95,6 @@ module.exports = [
         payload: null,
     },
     {
-        name: 'listBaremetalFlavors',
-        type: 'baremetal-server',
-        path: '/flavors/detail',
-        key: 'flavors',
-        method: 'GET',
-        payload: null,
-    },
-    {
         name: 'listBaremetalKeypairs',
         type: 'baremetal-server',
         path: '/os-keypairs',
@@ -127,20 +132,6 @@ module.exports = [
         type: 'nova',
         path: '/servers/:id',
         key: 'server',
-        method: 'GET',
-        payload: null,
-    },
-    {
-        name: 'listBaremetalServers',
-        type: 'baremetal-server',
-        path: '/servers/detail',
-        method: 'GET',
-        payload: null,
-    },
-    {
-        name: 'listBaremetalFlavors',
-        type: 'baremetal-server',
-        path: '/flavors/detail',
         method: 'GET',
         payload: null,
     },
@@ -292,6 +283,25 @@ module.exports = [
         type: 'network',
         path: '/load_balancers/:id',
         key: 'load_balancer',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'attachVolume',
+        type: 'nova',
+        path: '/servers/:id/os-volume_attachments',
+        method: 'POST'
+    },
+    {
+        name: 'detachVolume',
+        type: 'nova',
+        path: '/servers/:id/os-volume_attachments/:query',
+        method: 'DELETE'
+    },
+    {
+        name: 'listFirewallsvSRX',
+        type: 'virtual-network-appliance',
+        path: '/v1.0/virtual_network_appliances',
         method: 'GET',
         payload: null,
     },
