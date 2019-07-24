@@ -89,14 +89,6 @@ module.exports = [
     payload: null,
   },
   {
-    name: 'listBaremetalFlavors',
-    type: 'baremetal-server',
-    path: '/flavors/detail',
-    key: 'flavors',
-    method: 'GET',
-    payload: null,
-  },
-  {
     name: 'listBaremetalKeypairs',
     type: 'baremetal-server',
     path: '/os-keypairs',
