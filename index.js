@@ -34,12 +34,12 @@ const Client = options => {
                 },
             }
 
-            if(this.creds.tenantId){
-              payload.auth.scope={
-                  project: {
-                      id: this.creds.tenantId,
-                  },
-              }
+            if (this.creds.tenantId) {
+                payload.auth.scope = {
+                    project: {
+                        id: this.creds.tenantId,
+                    },
+                }
             }
 
             try {
@@ -54,25 +54,25 @@ const Client = options => {
                 this.token = r.headers['x-subject-token']
 
                 //Setup url catalog
-                r.data.token.catalog && r.data.token.catalog.forEach(c => {
+                r.data.token.catalog &&
+                    r.data.token.catalog.forEach(c => {
+                        const matched = c.endpoints.filter(e => e.interface === 'public')
 
-                    const matched = c.endpoints.filter(e => e.interface === 'public')
+                        if (matched.length > 0) {
+                            self.urls[c.name] = matched[0].url
 
-                    if (matched.length > 0) {
-                        self.urls[c.name] = matched[0].url
-
-                        if (c.name === 'network' && this.creds.appendVersionInPath) {
-                            self.urls.network = self.urls.network + '/v2.0'
+                            if (c.name === 'network' && this.creds.appendVersionInPath) {
+                                self.urls.network = self.urls.network + '/v2.0'
+                            }
+                            if (c.name === 'glance' && this.creds.appendVersionInPath) {
+                                self.urls.glance = self.urls.glance + '/v2'
+                            }
                         }
-                        if (c.name === 'glance' && this.creds.appendVersionInPath) {
-                            self.urls.glance = self.urls.glance + '/v2'
-                        }
-                    }
-                })
+                    })
 
                 resolve(this.token)
             } catch (err) {
-              console.log(err.response.data)
+                console.log(err.response.data)
                 reject(err)
             }
         })
@@ -92,11 +92,13 @@ const Client = options => {
                 url = self.urls[s.type] + s.path
             }
 
-            if (args && args.id) {
-                url = url.replace(':id', args.id)
-            }
-            if (args && args.query) {
-                url = url.replace(':query', args.query)
+            if (args) {
+                Object.keys(args).forEach(key => {
+                    const str = `:${key}`
+                    if (url.includes(str)) {
+                        url = url.replace(str, args[key])
+                    }
+                })
             }
 
             switch (s.method.toUpperCase()) {
