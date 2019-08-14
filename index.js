@@ -95,7 +95,7 @@ const Client = options => {
 
                 //SSS overrides
                 if (s.name.startsWith('sss') && this.creds.adminUrl) {
-                    url = this.creds.adminUrl
+                    url = this.creds.adminUrl + s.path
                 }
             }
 
