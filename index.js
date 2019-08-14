@@ -73,7 +73,9 @@ const Client = options => {
 
                 resolve(this.token)
             } catch (err) {
-                console.log(err.response.data)
+                if(err && err.response && err.response.data){
+                    console.log(err.response.data)
+                }
                 reject(err)
             }
         })
