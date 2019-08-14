@@ -35,6 +35,7 @@ module.exports = [
         type: 'baremetal-server',
         path: '/servers/detail',
         method: 'GET',
+        key: 'servers',
         payload: null,
     },
     {
@@ -42,6 +43,7 @@ module.exports = [
         type: 'baremetal-server',
         path: '/flavors/detail',
         method: 'GET',
+        key: 'flavors',
         payload: null,
     },
     {
@@ -124,6 +126,7 @@ module.exports = [
         name: 'listServers',
         type: 'nova',
         path: '/servers/detail',
+        key: 'servers',
         method: 'GET',
         payload: null,
     },
@@ -148,6 +151,7 @@ module.exports = [
         type: 'cinderv2',
         path: '/volumes/detail',
         method: 'GET',
+        key: 'volumes',
         payload: null,
     },
     {
