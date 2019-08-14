@@ -253,6 +253,7 @@ module.exports = [
         type: 'network',
         path: '/firewalls',
         method: 'GET',
+        key: 'firewalls',
         payload: null,
     },
     {
