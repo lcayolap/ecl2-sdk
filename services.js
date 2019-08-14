@@ -357,4 +357,17 @@ module.exports = [
         path: '/v1.0/ports',
         method: 'GET',
     },
+
+    //-----------------------------
+    //            SSS
+    //-----------------------------
+    {
+        name: 'sssListTenants',
+        type: 'sss',
+        key: 'tenants',
+        path: '/tenants',
+        method: 'GET',
+    },
+
+
 ]

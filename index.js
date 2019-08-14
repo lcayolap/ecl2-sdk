@@ -9,6 +9,7 @@ const Client = options => {
         zone: options.zone,
         authUrl: options.authUrl,
         appendVersionInPath: options.appendVersionInPath,
+        adminUrl: options.adminUrl,
     }
 
     let self = this
@@ -86,10 +87,16 @@ const Client = options => {
             }
 
             let url = ''
+
             if (s.type === 'auth') {
                 url = this.creds.authUrl + s.path
             } else {
                 url = self.urls[s.type] + s.path
+
+                //SSS overrides
+                if (s.name.startsWith('sss') && this.creds.adminUrl) {
+                    url = this.creds.adminUrl
+                }
             }
 
             if (args) {
@@ -104,16 +111,12 @@ const Client = options => {
             switch (s.method.toUpperCase()) {
                 case 'GET':
                     return utils.get(url, s.key, self.token)
-                    break
                 case 'PUT':
                     return utils.put(url, payload, s.key, self.token)
-                    break
                 case 'POST':
                     return utils.post(url, payload, s.key, self.token)
-                    break
                 case 'DELETE':
                     return utils.del(url, self.token)
-                    break
                 default:
                     console.log('Unsupported method in service: ', s)
                     break
