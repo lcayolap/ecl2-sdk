@@ -1,6 +1,6 @@
 {
     "name": "ecl2-sdk",
-    "version": "1.7.4",
+    "version": "1.7.6",
     "main": "index.js",
     "author": "Kashif Siddiqui",
     "license": "MIT",
