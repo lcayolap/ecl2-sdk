@@ -1,4 +1,5 @@
 const axios = require('axios')
+const pRetry = require('p-retry')
 
 const request = ({ method, url, payload, token }) => {
     const headers = {
@@ -15,15 +16,34 @@ const request = ({ method, url, payload, token }) => {
     return axios({ method, headers, url, data })
 }
 
-const get = (url, key, token, query) => {
+const get = (url, key, token, query, config) => {
     return new Promise(async (resolve, reject) => {
         try {
             if (query) url = url + '?' + query
-            const r = await request({
-                method: 'GET',
-                url: url,
-                token: token,
-            })
+
+            let r
+            if (config && config.retry) {
+                r = await pRetry(() => request({ method: 'GET', url, token }), {
+                    retries: 4,
+                    factor: 4, //Exponential backoff factor
+                    minTimeout: 3000, //First retry delay
+                    randomize: true,
+                    onFailedAttempt: err => {
+                        const status = err && err.response && err.response.status
+                        console.log(
+                            `FAILED: ${url}, STATUS: ${status}\nRetry: ${err.attemptNumber}. ${
+                                err.retriesLeft
+                            } retries left.`,
+                        )
+                    },
+                })
+            } else {
+                r = await request({
+                    method: 'GET',
+                    url: url,
+                    token: token,
+                })
+            }
             if (key && key !== '') {
                 if (r.data[key]) {
                     resolve(r.data[key])
@@ -34,14 +54,17 @@ const get = (url, key, token, query) => {
                 resolve(r.data)
             }
         } catch (err) {
-            reject(
-                'Error: ' +
-                    err.response.data.error +
-                    ', \nREQUEST: ' +
-                    err.request._header +
-                    '\n STATUS: ' +
-                    err.response.status,
-            )
+            let msg = ''
+            if (err.response && err.response.data && err.response.data.error) {
+                msg += `ERR: ${err.response.data.error}\n`
+            }
+            if (err.request && err.request._header) {
+                msg += `REQ: ${err.request._header}\n`
+            }
+            if (err.response && err.response.status) {
+                msg += `STATUS: ${err.response.status}`
+            }
+            reject(msg)
         }
     })
 }
@@ -56,14 +79,17 @@ const del = (url, token) => {
             })
             resolve('DONE')
         } catch (err) {
-            reject(
-                'Error: ' +
-                    err.response.data.error +
-                    ', \nREQUEST: ' +
-                    err.request._header +
-                    '\n STATUS: ' +
-                    err.response.status,
-            )
+            let msg = ''
+            if (err.response && err.response.data && err.response.data.error) {
+                msg += `ERR: ${err.response.data.error}\n`
+            }
+            if (err.request && err.request._header) {
+                msg += `REQ: ${err.request._header}\n`
+            }
+            if (err.response && err.response.status) {
+                msg += `STATUS: ${err.response.status}`
+            }
+            reject(msg)
         }
     })
 }
@@ -88,14 +114,17 @@ const put = (url, data, key, token) => {
                 resolve(r.data)
             }
         } catch (err) {
-            reject(
-                'Error: ' +
-                    err.response.data.error +
-                    ', \nREQUEST: ' +
-                    err.request._header +
-                    '\n STATUS: ' +
-                    err.response.status,
-            )
+            let msg = ''
+            if (err.response && err.response.data && err.response.data.error) {
+                msg += `ERR: ${err.response.data.error}\n`
+            }
+            if (err.request && err.request._header) {
+                msg += `REQ: ${err.request._header}\n`
+            }
+            if (err.response && err.response.status) {
+                msg += `STATUS: ${err.response.status}`
+            }
+            reject(msg)
         }
     })
 }
@@ -118,14 +147,17 @@ const post = (url, data, key, token) => {
                 resolve(r.data)
             }
         } catch (err) {
-            reject(
-                'Error: ' +
-                    err.response.data.error +
-                    ', \nREQUEST: ' +
-                    err.request._header +
-                    '\n STATUS: ' +
-                    err.response.status,
-            )
+            let msg = ''
+            if (err.response && err.response.data && err.response.data.error) {
+                msg += `ERR: ${err.response.data.error}\n`
+            }
+            if (err.request && err.request._header) {
+                msg += `REQ: ${err.request._header}\n`
+            }
+            if (err.response && err.response.status) {
+                msg += `STATUS: ${err.response.status}`
+            }
+            reject(msg)
         }
     })
 }
