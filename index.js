@@ -82,7 +82,7 @@ const Client = options => {
     }
 
     services.forEach(s => {
-        self[s.name] = args => {
+        self[s.name] = (args, config) => {
             let payload = s.payload
             if (args && args.payload) {
                 payload = args.payload
@@ -112,9 +112,11 @@ const Client = options => {
                 })
             }
 
+            if(!config) config = {}
+
             switch (s.method.toUpperCase()) {
                 case 'GET':
-                    return utils.get(url, s.key, self.token, query)
+                    return utils.get(url, s.key, self.token, query, config)
                 case 'PUT':
                     return utils.put(url, payload, s.key, self.token)
                 case 'POST':
