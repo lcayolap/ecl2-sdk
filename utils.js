@@ -15,9 +15,10 @@ const request = ({ method, url, payload, token }) => {
     return axios({ method, headers, url, data })
 }
 
-const get = (url, key, token) => {
+const get = (url, key, token, query) => {
     return new Promise(async (resolve, reject) => {
         try {
+            if (query) url = url + '?' + query
             const r = await request({
                 method: 'GET',
                 url: url,
@@ -33,7 +34,14 @@ const get = (url, key, token) => {
                 resolve(r.data)
             }
         } catch (err) {
-            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header+ '\n STATUS: ' + err.response.status)
+            reject(
+                'Error: ' +
+                    err.response.data.error +
+                    ', \nREQUEST: ' +
+                    err.request._header +
+                    '\n STATUS: ' +
+                    err.response.status,
+            )
         }
     })
 }
@@ -48,7 +56,14 @@ const del = (url, token) => {
             })
             resolve('DONE')
         } catch (err) {
-            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header+ '\n STATUS: ' + err.response.status)
+            reject(
+                'Error: ' +
+                    err.response.data.error +
+                    ', \nREQUEST: ' +
+                    err.request._header +
+                    '\n STATUS: ' +
+                    err.response.status,
+            )
         }
     })
 }
@@ -73,7 +88,14 @@ const put = (url, data, key, token) => {
                 resolve(r.data)
             }
         } catch (err) {
-            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header+ '\n STATUS: ' + err.response.status)
+            reject(
+                'Error: ' +
+                    err.response.data.error +
+                    ', \nREQUEST: ' +
+                    err.request._header +
+                    '\n STATUS: ' +
+                    err.response.status,
+            )
         }
     })
 }
@@ -96,7 +118,14 @@ const post = (url, data, key, token) => {
                 resolve(r.data)
             }
         } catch (err) {
-            reject('Error: ' + err.response.data.error + ', \nREQUEST: ' + err.request._header+ '\n STATUS: ' + err.response.status)
+            reject(
+                'Error: ' +
+                    err.response.data.error +
+                    ', \nREQUEST: ' +
+                    err.request._header +
+                    '\n STATUS: ' +
+                    err.response.status,
+            )
         }
     })
 }
@@ -105,5 +134,5 @@ module.exports = {
     get,
     post,
     put,
-    del
+    del,
 }

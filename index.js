@@ -73,9 +73,9 @@ const Client = options => {
 
                 resolve(this.token)
             } catch (err) {
-                if(err && err.response && err.response.data){
-                    console.log(err.response.data)
-                }
+                // if(err && err.response && err.response.data){
+                //     console.log(err.response.data)
+                // }
                 reject(err)
             }
         })
@@ -101,7 +101,9 @@ const Client = options => {
                 }
             }
 
+            let query = null
             if (args) {
+                query = args.query
                 Object.keys(args).forEach(key => {
                     const str = `:${key}`
                     if (url.includes(str)) {
@@ -112,7 +114,7 @@ const Client = options => {
 
             switch (s.method.toUpperCase()) {
                 case 'GET':
-                    return utils.get(url, s.key, self.token)
+                    return utils.get(url, s.key, self.token, query)
                 case 'PUT':
                     return utils.put(url, payload, s.key, self.token)
                 case 'POST':

@@ -141,7 +141,7 @@ module.exports = [
     {
         name: 'listSSS',
         type: 'sss',
-        path: '/billing/:query',
+        path: '/billing',
         key: 'sss',
         method: 'GET',
         payload: null,
@@ -154,13 +154,18 @@ module.exports = [
         key: 'volumes',
         payload: null,
     },
+    //Monitoring
     {
-        name: 'listMeterQuery',
+        name: 'listSamples',
         type: 'monitoring',
-        path: '/meters/:query',
-        key: 'meters',
+        path: 'v2/samples',
         method: 'GET',
-        payload: null,
+    },
+    {
+        name: 'listMeters',
+        type: 'monitoring',
+        path: 'v2/meters',
+        method: 'GET',
     },
     {
         name: 'getConsole',
@@ -292,6 +297,7 @@ module.exports = [
         name: 'listSnapshots',
         type: 'glance',
         path: '/images',
+        key: 'images',
         method: 'GET',
         payload: null,
     },
@@ -319,7 +325,7 @@ module.exports = [
     {
         name: 'detachVolume',
         type: 'nova',
-        path: '/servers/:id/os-volume_attachments/:query',
+        path: '/servers/:id/os-volume_attachments',
         method: 'DELETE',
     },
     {
