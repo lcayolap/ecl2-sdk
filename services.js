@@ -406,6 +406,11 @@ module.exports = [
         path: '/tenants',
         method: 'GET',
     },
-
-
+    {
+        name: 'sssGetContractBill',
+        type: 'sss',
+        path: '/contracts/:contractId/billing/:month',
+        method: 'GET',
+        payload: null,
+    },
 ]
