@@ -1,6 +1,4 @@
-
 module.exports = [
-
     {
         name: 'listNetworks',
         type: 'network',
@@ -70,6 +68,22 @@ module.exports = [
         payload: null,
     },
     {
+        name: 'listFirewallInterfaces',
+        type: 'network',
+        path: '/firewall_interfaces',
+        key: 'firewall_interfaces',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'getFirewallPlan',
+        type: 'network',
+        path: '/firewall_plans/:id',
+        key: 'firewall_plan',
+        method: 'GET',
+        payload: null,
+    },
+    {
         name: 'listLoadbalancers',
         type: 'network',
         path: '/load_balancers',
@@ -86,11 +100,59 @@ module.exports = [
         payload: null,
     },
     {
+        name: 'getInternetService',
+        type: 'network',
+        path: '/internet_services/:id',
+        key: 'internet_service',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'listGlobalIps',
+        type: 'network',
+        path: '/public_ips',
+        key: 'public_ips',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'listGatewayInterfaces',
+        type: 'network',
+        path: '/gw_interfaces',
+        key: 'gw_interfaces',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'listStaticRoutes',
+        type: 'network',
+        path: '/static_routes',
+        key: 'static_routes',
+        method: 'GET',
+        payload: null,
+    },
+    {
         name: 'listVPNGateways',
         type: 'network',
         path: '/vpn_gateways',
         method: 'GET',
         key: 'vpn_gateways',
+        payload: null,
+    },
+    {
+        name: 'getVPNService',
+        type: 'network',
+        path: '/vpn_services/:id',
+        key: 'vpn_service',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'listVPNInterfaces',
+        type: 'network',
+        path: '/vpn_interfaces',
+        key: 'vpn_interfaces',
+        method: 'GET',
         payload: null,
     },
 ]

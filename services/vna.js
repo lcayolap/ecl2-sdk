@@ -14,4 +14,11 @@ module.exports = [
         key: 'operations',
         method: 'GET',
     },
+    {
+        name: 'getVNAPlan',
+        type: 'virtual-network-appliance',
+        path: '/v1.0/virtual_network_appliance_plans/:id',
+        key: 'virtual_network_appliance_plan',
+        method: 'GET',
+    },
 ]

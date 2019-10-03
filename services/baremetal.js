@@ -46,6 +46,13 @@ module.exports = [
         payload: { 'os-start': { boot_mode: 'DISK' } },
     },
     {
+        name: 'stopBaremetalServer',
+        type: 'baremetal-server',
+        path: '/servers/:id/action',
+        method: 'POST',
+        payload: { 'os-stop': { boot_mode: 'DISK' } },
+    },
+    {
         name: 'rebootBaremetalServer',
         type: 'baremetal-server',
         path: '/servers/:id/action',
