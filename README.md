@@ -57,20 +57,24 @@
 -   startServer
 -   stopServer
 -   deleteServer
+-   getConsole
+-   resizeServer
+
 
 ### Baremetal Server
 
--   listServer
--   getServer
--   deleteServer
--   getConsole
--   startServer
--   stopServer
--   rebootServer
--   listZones
--   listKeypairs
--   listMetadata
--   listLimits
+-   listBaremetalServers
+-   listBaremetalFlavors
+-   getBaremetalServer
+-   deleteBaremetalServer
+-   getBaremetalConsole
+-   startBaremetalServer
+-   stopBaremetalServer
+-   rebootBaremetalServer
+-   listBaremetalZones
+-   listBaremetalKeypairs
+-   listBaremetalServerMetadata
+-   listBaremetalLimits
 
 ### Network
 
@@ -79,26 +83,100 @@
 -   createNetwork
 -   updateNetwork
 -   deleteNetwork
+-   listSubnets
+-   getSubnet
+
 
 ### Firewall
 
 -   listFirewalls
 -   getFirewall
+-   listFirewallInterfaces
+-   getFirewallPlan
 
 ### Loadbalancer
 
 -   listLoadbalancers
 -   getLoadbalancer
+-   getLoadBalancerPlan
+-   listLoadbalancerInterfaces
 
 
 ### Availability Zone
 
 -   listZones
 
+
 ### Catalog
 
 -   listCatalog
 
 
+### Keypairs
+
+-   listKeypairs
+-   deleteKeypair
 
 
+### Zones
+
+-   listZones
+
+
+### Monitoring
+
+-   listSamples
+-   listMeters
+
+
+### Internet Gateway
+
+-   listInternetGateways
+-   getInternetService
+-   listGlobalIps
+-   listGatewayInterfaces
+-   listStaticRoutes
+
+
+### VPN Gateway
+
+-   listVPNGateways
+
+
+### Snapshots
+
+-   listSnapshots
+-   getImageDetails
+
+
+### Volumes
+
+-   listVolumes
+-   attachVolume
+-   dettachVolume
+
+
+### VNA
+
+-   listVNA
+-   listVNAOperations
+-   getVNAPlan
+
+
+### FIC
+
+-   ficListRouters
+-   ficListOperations
+-   ficListRouterFirewalls
+-   ficListRouterNATs
+-   ficListNATGIPAddressSet
+-   ficListLOAs
+-   ficListConnections
+-   ficListPorts
+
+
+### SSS
+
+-   listSSS
+-   sssListTenants
+-   sssGetContractBill
