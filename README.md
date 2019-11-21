@@ -152,6 +152,7 @@
 ### Volumes
 
 -   listVolumes
+-   listStorageVolumes
 -   attachVolume
 -   dettachVolume
 
