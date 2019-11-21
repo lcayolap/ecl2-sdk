@@ -8,6 +8,14 @@ module.exports = [
         payload: null,
     },
     {
+        name: 'listStorageVolumes',
+        type: 'storage',
+        path: '/volumes/detail',
+        method: 'GET',
+        key: 'volumes',
+        payload: null,
+    },
+    {
         name: 'listSnapshots',
         type: 'glance',
         path: '/images',
