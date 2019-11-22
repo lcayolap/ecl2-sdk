@@ -8,6 +8,14 @@ module.exports = [
         payload: null,
     },
     {
+        name: 'getVolume',
+        type: 'cinderv2',
+        path: '/volumes/:id',
+        method: 'GET',
+        key: 'volume',
+        payload: null,
+    },
+    {
         name: 'listStorageVolumes',
         type: 'storage',
         path: '/volumes/detail',
