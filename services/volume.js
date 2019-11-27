@@ -16,6 +16,12 @@ module.exports = [
         payload: null,
     },
     {
+        name: 'deleteVolume',
+        type: 'cinderv2',
+        path: '/volumes/:id',
+        method: 'DELETE',
+    },
+    {
         name: 'listStorageVolumes',
         type: 'storage',
         path: '/volumes/detail',

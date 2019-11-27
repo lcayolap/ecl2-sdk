@@ -153,6 +153,7 @@
 
 -   listVolumes
 -   getVolume
+-   deleteVolume
 -   listStorageVolumes
 -   attachVolume
 -   dettachVolume
