@@ -60,7 +60,7 @@ const Client = options => {
                         const matched = c.endpoints.filter(e => e.interface === 'public')
 
                         if (matched.length > 0) {
-                            self.urls[c.name] = matched[0].url
+                            self.urls[c.type] = matched[0].url
 
                             if (c.name === 'network' && this.creds.appendVersionInPath) {
                                 self.urls.network = self.urls.network + '/v2.0'
@@ -93,12 +93,14 @@ const Client = options => {
             if (s.type === 'auth') {
                 url = this.creds.authUrl + s.path
             } else {
-                url = self.urls[s.type] + s.path
-
                 //SSS overrides
                 if (s.name.startsWith('sss') && this.creds.adminUrl) {
                     url = this.creds.adminUrl + s.path
-                }
+				}else{
+					const root = self.urls[s.type]
+					if (!root) throw new Error("Unsupported API")
+					url = root + s.path
+				}
             }
 
             let query = null
@@ -112,7 +114,7 @@ const Client = options => {
                 })
             }
 
-            if(!config) config = {}
+            if (!config) config = {}
 
             switch (s.method.toUpperCase()) {
                 case 'GET':
@@ -138,10 +140,13 @@ const Client = options => {
                     const matched = c.endpoints.filter(e => e.interface === 'public')
 
                     if (matched.length > 0) {
-                        self.urls[c.name] = matched[0].url
+                        self.urls[c.type] = matched[0].url
 
                         if (c.name === 'network' && this.creds.appendVersionInPath) {
                             self.urls.network = self.urls.network + '/v2.0'
+                        }
+                        if (c.name === 'glance' && this.creds.appendVersionInPath) {
+                            self.urls.glance = self.urls.glance + '/v2'
                         }
                     }
                 })

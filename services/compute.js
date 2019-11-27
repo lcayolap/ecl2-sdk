@@ -1,7 +1,7 @@
 module.exports = [
     {
         name: 'listZones',
-        type: 'nova',
+        type: 'compute',
         path: '/os-availability-zone',
         key: 'availabilityZoneInfo',
         method: 'GET',
@@ -9,7 +9,7 @@ module.exports = [
     },
     {
         name: 'listServers',
-        type: 'nova',
+        type: 'compute',
         path: '/servers/detail',
         key: 'servers',
         method: 'GET',
@@ -17,7 +17,7 @@ module.exports = [
     },
     {
         name: 'getServer',
-        type: 'nova',
+        type: 'compute',
         path: '/servers/:id',
         key: 'server',
         method: 'GET',
@@ -25,7 +25,7 @@ module.exports = [
     },
     {
         name: 'getConsole',
-        type: 'nova',
+        type: 'compute',
         path: '/servers/:id/action',
         method: 'POST',
         key: 'console',
@@ -33,27 +33,27 @@ module.exports = [
     },
     {
         name: 'startServer',
-        type: 'nova',
+        type: 'compute',
         path: '/servers/:id/action',
         method: 'POST',
         payload: { 'os-start': null },
     },
     {
         name: 'stopServer',
-        type: 'nova',
+        type: 'compute',
         path: '/servers/:id/action',
         method: 'POST',
         payload: { 'os-stop': null },
     },
     {
         name: 'resizeServer',
-        type: 'nova',
+        type: 'compute',
         path: '/servers/:id/action',
         method: 'POST',
     },
     {
         name: 'deleteServer',
-        type: 'nova',
+        type: 'compute',
         path: '/servers/:id',
         method: 'DELETE',
     },
