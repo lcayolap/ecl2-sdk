@@ -98,6 +98,7 @@
 
 -   listLoadbalancers
 -   getLoadbalancer
+-   deleteLoadbalancer
 -   getLoadBalancerPlan
 -   listLoadbalancerInterfaces
 
