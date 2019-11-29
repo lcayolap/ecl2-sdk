@@ -8,6 +8,20 @@ module.exports = [
         payload: null,
     },
     {
+        name: 'getVNA',
+        type: 'virtual-network-appliance',
+        path: '/v1.0/virtual_network_appliances/:id',
+        key: 'virtual_network_appliance',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'deleteVNA',
+        type: 'virtual-network-appliance',
+        path: '/v1.0/virtual_network_appliances/:id',
+        method: 'DELETE',
+    },
+    {
         name: 'listVNAOperations',
         type: 'virtual-network-appliance',
         path: '/v1.0/operations?resource_id=:resourceId',
@@ -20,5 +34,19 @@ module.exports = [
         path: '/v1.0/virtual_network_appliance_plans/:id',
         key: 'virtual_network_appliance_plan',
         method: 'GET',
+    },
+    {
+        name: 'startVNA',
+        type: 'virtual-network-appliance',
+        path: '/v1.0/virtual_network_appliances/:id/action',
+        method: 'POST',
+        payload: { 'os-start': null },
+    },
+    {
+        name: 'stopVNA',
+        type: 'virtual-network-appliance',
+        path: '/v1.0/virtual_network_appliances/:id/action',
+        method: 'POST',
+        payload: { 'os-stop': null },
     },
 ]

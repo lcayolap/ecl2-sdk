@@ -165,6 +165,10 @@
 -   listVNA
 -   listVNAOperations
 -   getVNAPlan
+-   deleteVNA
+-   getVNA
+-   startVNA
+-   stopVNA
 
 
 ### FIC
