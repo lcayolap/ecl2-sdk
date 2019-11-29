@@ -92,6 +92,20 @@ module.exports = [
         payload: null,
     },
     {
+        name: 'getLoadbalancer',
+        type: 'network',
+        path: '/load_balancers/:id',
+        key: 'load_balancers',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'deleteLoadbalancer',
+        type: 'network',
+        path: '/load_balancers/:id',
+        method: 'DELETE',
+    },
+    {
         name: 'listInternetGateways',
         type: 'network',
         path: '/internet_gateways',

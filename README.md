@@ -98,6 +98,7 @@
 
 -   listLoadbalancers
 -   getLoadbalancer
+-   deleteLoadbalancer
 -   getLoadBalancerPlan
 -   listLoadbalancerInterfaces
 
@@ -152,6 +153,8 @@
 ### Volumes
 
 -   listVolumes
+-   getVolume
+-   deleteVolume
 -   listStorageVolumes
 -   attachVolume
 -   dettachVolume

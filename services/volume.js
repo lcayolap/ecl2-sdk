@@ -8,6 +8,20 @@ module.exports = [
         payload: null,
     },
     {
+        name: 'getVolume',
+        type: 'volumev2',
+        path: '/volumes/:id',
+        method: 'GET',
+        key: 'volume',
+        payload: null,
+    },
+    {
+        name: 'deleteVolume',
+        type: 'volumev2',
+        path: '/volumes/:id',
+        method: 'DELETE',
+    },
+    {
         name: 'listStorageVolumes',
         type: 'storage',
         path: '/volumes/detail',
