@@ -1,7 +1,7 @@
 module.exports = [
     {
         name: 'listVolumes',
-        type: 'cinderv2',
+        type: 'volumev2',
         path: '/volumes/detail',
         method: 'GET',
         key: 'volumes',
@@ -9,7 +9,7 @@ module.exports = [
     },
     {
         name: 'getVolume',
-        type: 'cinderv2',
+        type: 'volumev2',
         path: '/volumes/:id',
         method: 'GET',
         key: 'volume',
@@ -17,7 +17,7 @@ module.exports = [
     },
     {
         name: 'deleteVolume',
-        type: 'cinderv2',
+        type: 'volumev2',
         path: '/volumes/:id',
         method: 'DELETE',
     },
