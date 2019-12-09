@@ -130,6 +130,20 @@ module.exports = [
         payload: null,
     },
     {
+        name: 'getInternetGateway',
+        type: 'network',
+        path: '/internet_gateways/:id',
+        key: 'internet_gateway',
+        method: 'GET',
+        payload: null,
+    },
+    {
+        name: 'deleteInternetGateway',
+        type: 'network',
+        path: '/internet_gateway/:id',
+        method: 'DELETE',
+    },
+    {
         name: 'getInternetService',
         type: 'network',
         path: '/internet_services/:id',

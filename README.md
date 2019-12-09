@@ -133,6 +133,8 @@
 ### Internet Gateway
 
 -   listInternetGateways
+-   getInternetGateway
+-   deleteInternetGateway
 -   getInternetService
 -   listGlobalIps
 -   listGatewayInterfaces
