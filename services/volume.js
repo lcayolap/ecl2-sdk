@@ -31,18 +31,26 @@ module.exports = [
     },
     {
         name: 'listSnapshots',
-        type: 'glance',
-        path: '/images',
+        type: 'image',
+        path: 'v2/images', //glance ends with slash /
         key: 'images',
         method: 'GET',
         payload: null,
     },
     {
         name: 'getImageDetails',
-        type: 'glance',
-        path: '/images/:id',
+        type: 'image',
+        path: 'v2/images/:id', //glance ends with slash /
         method: 'GET',
         payload: null,
+    },
+    {
+        name: 'getNovaImageDetails',
+        type: 'compute',
+        path: '/images/:id', //glance ends with slash /
+        method: 'GET',
+        payload: null,
+        key: 'image',
     },
     {
         name: 'attachVolume',

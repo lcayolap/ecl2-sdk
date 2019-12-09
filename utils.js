@@ -19,6 +19,7 @@ const request = ({ method, url, payload, token }) => {
 const get = (url, key, token, query, config) => {
     return new Promise(async (resolve, reject) => {
         try {
+            if (config.url) url = config.url
             if (query) url = url + '?' + query
 
             let r
